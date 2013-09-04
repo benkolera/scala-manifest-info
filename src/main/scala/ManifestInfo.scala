@@ -10,7 +10,7 @@ object ManifestInfo {
     val out =
       for {
         url  <- Option(clazz.getProtectionDomain.getCodeSource.getLocation)
-        file <- Option(url.getFile)
+        file <- Option(url.getFile) if file.endsWith(".jar")
       } yield {
         val attrs = new JarFile(file).getManifest.getMainAttributes.entrySet.toSet
         attrs.foldLeft( Map[String,String]() )(

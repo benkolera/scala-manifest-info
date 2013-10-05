@@ -5,9 +5,9 @@ organization := "com.benkolera"
 
 name := "manifest-info"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.3"
 
-scalacOptions ++= Seq("-feature","-deprecation")
+scalacOptions ++= Seq("-feature","-deprecation","-Xfatal-warnings")
 
 libraryDependencies ++= Seq()
 
@@ -21,11 +21,9 @@ nextVersion := { ver =>
 
 //Make this publish to oss.sonatype.com later
 publishTo <<= version { (v: String) =>
-  val nexus = "http://jenkins.build.iseek.com.au:8081/nexus/"
+  val nexus = "http://nexus.benkolera.com/nexus/"
   if (v.trim.endsWith("SNAPSHOT"))
     Some("snapshots" at nexus + "content/repositories/snapshots/")
   else
     Some("releases"  at nexus + "content/repositories/releases/")
 }
-
-credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")

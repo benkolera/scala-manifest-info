@@ -5,11 +5,13 @@ organization := "com.benkolera"
 
 name := "manifest-info"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.11.1"
 
 scalacOptions ++= Seq("-feature","-deprecation","-Xfatal-warnings")
 
 libraryDependencies ++= Seq()
+
+crossScalaVersions := Seq("2.10.4", scalaVersion.value)
 
 resolvers ++= Seq()
 
